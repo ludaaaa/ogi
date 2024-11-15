@@ -25,19 +25,21 @@
 
      sudo wget -P /etc/yum.repos.d/ https://download.docker.com/linux/centos/docker-ce.repo
 
-![image](https://github.com/user-attachments/assets/f329b74f-10dc-49b8-9b1c-26091a27e1cf)
+![image](https://github.com/user-attachments/assets/be7a10f4-1e8a-4d21-a643-fcf2e7c66d69)
+
 
 Устанавливаем docker
 
      sudo yum install docker-ce docker-ce-cli containerd.io
 
-![image](https://github.com/user-attachments/assets/57d6f0d6-7a5a-4050-9570-f87852cdefaa)
+![image](https://github.com/user-attachments/assets/e27179c5-541a-441d-8788-ca82eeb0f43a)
 
 Запускаем его и разрешаем автозапуск
 
      sudo systemctl enable docker --now
 
-![image](https://github.com/user-attachments/assets/f3ad9197-bfcb-4117-a77a-eaf1d22dbf35)
+![image](https://github.com/user-attachments/assets/34ba26cc-bf26-4831-b155-545c72fc4ad6)
+
 
 
 # Установка compose
@@ -46,7 +48,8 @@
 
      sudo yum install curl
 
-![image](https://github.com/user-attachments/assets/d819eeeb-44a9-4a4a-8e97-c5666de0d3be)
+![image](https://github.com/user-attachments/assets/ee80618c-89c1-41cb-ab4d-7c2a0e541c83)
+
 
 
 Объявление переменной COMVER, полученной в результате curl запроса, хранящей в себе номер последней
@@ -58,7 +61,8 @@
 
      sudo curl -L "https://github.com/docker/compose/releases/download/$COMVER/docker-compose-$(uname -s)-$(uname -m)" -o /usr/bin/docker-compose
 
-![image](https://github.com/user-attachments/assets/45d3058b-6975-497c-9da6-47606a2275e1)
+![image](https://github.com/user-attachments/assets/8618ffda-def1-46e0-9aa6-b31210af5f16)
+
 
 
 Предоставление прав на выполнение файла docker-compose
@@ -69,7 +73,8 @@
 
      sudo docker-compose --version
 
-![image](https://github.com/user-attachments/assets/e07a4840-7860-4552-8e8d-5901c4a93548)
+![image](https://github.com/user-attachments/assets/0aabdff0-918a-4eb5-9949-af97e8f15390)
+
 
 # Делаем grafana
 
@@ -77,14 +82,16 @@
 
      sudo yum install git
 
-![image](https://github.com/user-attachments/assets/1fafc932-0906-47cf-8f95-8d2a6c736b1e)
+![image](https://github.com/user-attachments/assets/eba26674-0dfe-4c2d-82b6-c789950ffe03)
+
 
 
 Этот код скачивает содержимое репозитория skl256/grafana_stack_for_docker
 
      sudo git clone https://github.com/skl256/grafana_stack_for_docker.git
 
-![image](https://github.com/user-attachments/assets/26c8955b-d03a-46c2-9eec-8b5d0e82f253)
+![image](https://github.com/user-attachments/assets/0a6b8008-4b54-4b27-a3ef-754b24e57959)
+
 
 
 Заходит в папку - cd
@@ -92,8 +99,6 @@
      cd grafana_stack_for_docker
 
 cd .. - возвращает в папку выше
-
-![image](https://github.com/user-attachments/assets/5ed09383-32b1-4a8f-b940-44a9ff1cd5e4)
 
 
 (После этого можно вставлять готовый docker-compose)
@@ -120,7 +125,7 @@ Cоздаем папки двумя разными способами
 
      sudo mv grafana.yaml docker-compose.yaml
 
-![image](https://github.com/user-attachments/assets/7f01e5ce-8ce3-439d-9013-332e20f6dd41)
+![image](https://github.com/user-attachments/assets/894d0467-5354-48b7-ad3b-553326f4815f)
 
 
 Собрать докер (нужно запускать из папки где docker-compose.yaml)
@@ -129,7 +134,8 @@ Cоздаем папки двумя разными способами
 
 Опустить докер - sudo docker compose stop
 
-![image](https://github.com/user-attachments/assets/ba2421bc-44cb-4811-a1c8-817d87bff209)
+![image](https://github.com/user-attachments/assets/bec1cf3c-484b-44b9-8da0-6bc8131aeac9)
+
 
 
 
@@ -143,7 +149,7 @@ Cоздаем папки двумя разными способами
 
 Затем в docker-compose нужно вставить node-exporter и удалить ненужные файлы (но у нас уже вставлен готовый докер)
 
-![image](https://github.com/user-attachments/assets/44d39597-94bb-4632-8e6c-f2f5ba51f9c0)
+![image](https://github.com/user-attachments/assets/14df36d8-22eb-42ea-b544-b1269c0a0393)
 
 выйти не сохраняясь из vim - esc -> :q!
 
@@ -157,12 +163,13 @@ Cоздаем папки двумя разными способами
 
      sudo vi prometheus.yaml
 
-![image](https://github.com/user-attachments/assets/9ed6287d-a3a6-47dd-a5ac-c5bb1af1cf40)
+![image](https://github.com/user-attachments/assets/df43bb29-972e-48ae-9224-6f8d222ebe0d)
+
 
 
 Далее нужно исправить targets: на exporter:9100
 
-![image](https://github.com/user-attachments/assets/6fa47729-6b23-4deb-ab7f-e79109ed7e58)
+![image](https://github.com/user-attachments/assets/d6dc7b39-175e-44e1-8fe3-e244cd85c825)
 
 
 # Делаем grafana на сайте
@@ -205,11 +212,7 @@ Cоздаем папки двумя разными способами
 
 
 
-![image](https://github.com/user-attachments/assets/1baa7e02-29d9-48d1-bcb1-7e9b3d81fcac)
-
-
-
-![image](https://github.com/user-attachments/assets/ac3ec5fc-f576-415a-a90a-ce116c401c42)
+![image](https://github.com/user-attachments/assets/0c2c1e9e-a2e9-484b-909c-03f10e7282f6)
 
 
 
@@ -227,7 +230,8 @@ Cоздаем папки двумя разными способами
 
 После prometheus вставляем vmagent (но у нас уже вставлен готовый докер)
 
-![image](https://github.com/user-attachments/assets/6c101f26-b2e3-4070-8a93-f15c00d49ecb)
+![image](https://github.com/user-attachments/assets/ad84d1c3-5449-4dc3-a8fd-e8ce10a098b2)
+
 
 
 Захом в connection там где мы писали http://prometheus:9090 пишем http://victoriametrics:8428 И заменяем имя из "Prometheus-2" в "Vika" нажимаем на dashboards add visualition выбираем "Vika" снизу меняем на "code" Переходим в терминал и пишем
@@ -244,7 +248,7 @@ Cоздаем папки двумя разными способами
 
 • команда выводит информацию о типе и значении этой метрики в формате, который может быть использован системой мониторинга Prometheus.
 
-![image](https://github.com/user-attachments/assets/89d885aa-95ec-41c0-b214-48594f8830ac)
+![image](https://github.com/user-attachments/assets/557aae50-2fcf-4334-be28-2c823d5bf964)
 
 Значение 0 меняем на любое другое
 
@@ -252,13 +256,13 @@ Cоздаем папки двумя разными способами
 
 Нажимаем run
 
-![image](https://github.com/user-attachments/assets/c9a52b4c-1b65-4def-ac8b-b78a188faacb)
+![image](https://github.com/user-attachments/assets/03954f3d-1782-4658-9475-8d089be587c4)
 
-![image](https://github.com/user-attachments/assets/7f1e473c-64e6-41ac-a44e-5ef4203a3153)
 
 Копируем переменную OILCOINT_metric1 и вставляем в code
 
-![image](https://github.com/user-attachments/assets/014556de-9a3c-48d6-9d9b-6122f7aae2dd)
+![image](https://github.com/user-attachments/assets/8dff93c2-2a70-4a9a-8302-4670f4bd6f44)
+
 
 
 
